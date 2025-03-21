@@ -1,0 +1,51 @@
+/* Custom Pagination Styling */
+.pagination .page-link {
+    padding: 0.3rem 0.6rem;
+    font-size: 0.85rem;
+}
+
+/* Target pagination arrows specifically */
+.pagination .page-item .page-link[rel="prev"],
+.pagination .page-item .page-link[rel="next"],
+.pagination .page-item:first-child .page-link,
+.pagination .page-item:last-child .page-link {
+    padding: 0.3rem 0.6rem;
+    font-size: 0.75rem;
+}
+
+/* Fix for Bootstrap pagination SVG icons */
+.pagination svg {
+    width: 12px;
+    height: 12px;
+}
+
+/* Make the pagination container more compact */
+.pagination {
+    margin-bottom: 1rem;
+}
+
+/* Make pagination fit better on mobile */
+@media (max-width: 576px) {
+    .pagination .page-link {
+        padding: 0.25rem 0.5rem;
+        font-size: 0.8rem;
+    }
+    
+    .pagination svg {
+        width: 10px;
+        height: 10px;
+    }
+}
+
+/* Style the pagination results text */
+.text-sm.text-gray-700.leading-5 {
+    font-size: 0.85rem;
+    margin-bottom: 0.75rem;
+    text-align: center;
+    color: #6c757d;
+}
+
+/* Give space between pagination elements */
+nav[role="navigation"] > div:first-child {
+    margin-bottom: 0.75rem;
+}

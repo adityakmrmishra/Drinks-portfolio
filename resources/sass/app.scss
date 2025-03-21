@@ -1,0 +1,72 @@
+// Fonts
+@import url('https://fonts.bunny.net/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+// Custom styles can be added here
+
+// Custom pagination styles
+.pagination {
+    .page-link {
+        padding: 0.3rem 0.6rem;
+        font-size: 0.85rem;
+    }
+
+    .page-item {
+        .page-link[rel="prev"]::before,
+        .page-link[rel="next"]::after {
+            font-size: 0.85rem;
+        }
+
+        &:first-child .page-link,
+        &:last-child .page-link {
+            padding: 0.3rem 0.6rem;
+        }
+    }
+
+    margin-bottom: 1rem;
+
+    // Target Laravel's SVG icons in pagination
+    svg {
+        width: 12px !important;
+        height: 12px !important;
+        vertical-align: middle;
+    }
+    
+    // Make sure flex layout doesn't make arrows too large
+    .flex-1 {
+        flex: none !important;
+    }
+}
+
+// Style Laravel's pagination text
+.text-sm.text-gray-700.leading-5,
+.text-sm.text-gray-700.leading-5.dark\:text-gray-400 {
+    font-size: 0.85rem !important;
+    margin-bottom: 0.75rem !important;
+    text-align: center !important;
+    color: #6c757d !important;
+}
+
+// Give space between pagination elements
+nav[role="navigation"] > div:first-child {
+    margin-bottom: 0.75rem !important;
+}
+
+// Adjust spacing in pagination nav
+nav[role="navigation"] {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+@media (max-width: 576px) {
+    .pagination .page-link {
+        padding: 0.25rem 0.5rem;
+        font-size: 0.8rem;
+    }
+}
