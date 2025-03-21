@@ -99,6 +99,11 @@ Follow these steps to set up your Cocktail & Mocktail Drinks Portfolio project:
    ```
    php artisan serve
    ```
+   
+   Or use the provided Composer script which prevents timeout issues:
+   ```
+   composer serve
+   ```
 
 10. Visit http://localhost:8000 in your browser to see your cocktail portfolio!
 
@@ -158,6 +163,10 @@ $(document).ready(function() {
 ## Troubleshooting
 
 If you encounter issues:
+
+### Server Timeout
+- If you see "The process exceeded the timeout of 300 seconds" error, use the `composer serve` command instead of `php artisan serve`
+- This command has timeouts disabled so the server can run indefinitely
 
 ### Vite Manifest Not Found
 1. Make sure Node.js is installed correctly
