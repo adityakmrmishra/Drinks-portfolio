@@ -1,19 +1,19 @@
-# Installation Guide
+# Installation Guide - Cocktail & Mocktail Portfolio
 
-Follow these steps to set up your Laravel project with SQLite and Bootstrap:
+Follow these steps to set up your Cocktail & Mocktail Drinks Portfolio project:
 
 ## Prerequisites
 
 1. Install XAMPP with PHP 8.1 or higher
    - Download from [apachefriends.org](https://www.apachefriends.org/download.html)
-   - Make sure MySQL and Apache services are running
+   - Make sure Apache services are running
 
 2. Enable required PHP extensions
    - Open C:\xampp\php\php.ini in a text editor
    - Find and uncomment these lines by removing the semicolon:
      - `;extension=zip`
      - `;extension=fileinfo`
-     - `;extension=pdo_mysql`
+     - `;extension=pdo_sqlite`
      - `;extension=mbstring`
    - Save the file
    - Restart the Apache service in XAMPP Control Panel
@@ -31,52 +31,56 @@ Follow these steps to set up your Laravel project with SQLite and Bootstrap:
 
 ## Project Setup
 
-1. **Create a new Laravel project**:
+1. **Clone the repository**:
    - Open Command Prompt or PowerShell
-   - Navigate to where you want to create your project (e.g., D:\OPEN SOURCE\php)
-   - Run the following command:
+   - Navigate to your desired location (e.g., D:\OPEN SOURCE\php)
+   - Run: 
    ```
-   composer create-project laravel/laravel auth-website
+   git clone https://github.com/yourusername/cocktail-portfolio.git
+   cd cocktail-portfolio
    ```
-   - This will create a new directory with all required Laravel files
+   - Or download and extract the ZIP file
 
-2. Navigate to your project directory:
+2. Install PHP dependencies:
    ```
-   cd auth-website
+   composer install
    ```
 
-3. Generate application key:
+3. Install frontend dependencies:
+   ```
+   npm install
+   ```
+
+4. Copy the environment file:
+   ```
+   copy .env.example .env
+   ```
+
+5. Generate application key:
    ```
    php artisan key:generate
    ```
 
-4. Install authentication scaffolding:
-   ```
-   composer require laravel/ui
-   php artisan ui bootstrap --auth
-   npm install
-   ```
-
-5. Build frontend assets:
-   - For development:
-   ```
-   npm run dev
-   ```
-   - For production (recommended before deploying):
+6. Build frontend assets:
+   - For production (recommended):
    ```
    npm run build
+   ```
+   - For development (with HMR):
+   ```
+   npm run dev
    ```
    
    > **Important**: Always run `npm run build` before starting the server to avoid "Vite manifest not found" errors. Laravel requires the compiled assets to be present in the `public/build` directory.
 
-6. Configure database:
-   - Open the .env file in your project root
-   - Set the database connection details for SQLite:
+7. Configure database:
+   - The project uses SQLite for simplicity
+   - Make sure your .env file contains:
    ```
    DB_CONNECTION=sqlite
    DB_DATABASE=database/database.sqlite
    ```
-   - Create an empty SQLite database file:
+   - Create the SQLite database file:
    ```
    touch database/database.sqlite
    ```
@@ -86,18 +90,26 @@ Follow these steps to set up your Laravel project with SQLite and Bootstrap:
    ```
    - Or manually create an empty file at database/database.sqlite
 
-7. Run migrations:
+8. Run migrations and seed the database with sample cocktails:
    ```
-   php artisan migrate
+   php artisan migrate --seed
    ```
-   - This will create all the necessary tables in your SQLite database
 
-8. Start the development server:
+9. Start the development server:
    ```
    php artisan serve
    ```
 
-9. Visit http://localhost:8000 in your browser
+10. Visit http://localhost:8000 in your browser to see your cocktail portfolio!
+
+## Drink Management
+
+The seeder provides a variety of popular cocktail and mocktail recipes. You can:
+
+- Browse the catalog at `/drinks`
+- View detailed recipes at `/drinks/{id}`
+- Manage your favorites at `/my-collection` (requires login)
+- Add new recipes at `/drinks/create` (admin only)
 
 ## Asset Building in Laravel with Vite
 
